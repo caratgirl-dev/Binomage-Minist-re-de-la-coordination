@@ -1,134 +1,205 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="./img/Logo du ministère de la coordination.jpeg" type="image/x-icon">
-  <title>Ministère De La Coordination - Site Officiel</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            sorbet: "#F97316",
-            cotton: "#F5EBDD",
-            darktext: "#2B2B2B"
-          }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ministère de la Coordination</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        marine: "#0B1C2D",
+        taupe: "#D8CFC4",
+        taupeSoft: "#F3EFEA",
+        accent: "#C6A75E"
       }
     }
-  </script>
+  }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 </head>
 
-<body class="bg-cotton text-darktext">
+<body class="bg-taupeSoft text-marine font-[Inter]">
 
 <!-- ================= HEADER ================= -->
-<header class="fixed w-full bg-cotton/90 backdrop-blur-md shadow-sm z-50">
-  <div class="max-w-7xl mx-auto grid grid-cols-3 items-center px-10 py-5">
+<header class="fixed w-full bg-marine/90 backdrop-blur-md z-50 shadow-lg">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">
 
-    <nav class="flex gap-8 text-sm font-semibold">
-      <a href="#" class="hover:text-sorbet transition">Accueil</a>
-      <a href="#about" class="hover:text-sorbet transition">À propos</a>
-      <a href="#binomage" class="hover:text-sorbet transition">Binomage</a>
+  <a href="#" class="flex items-center gap-3">
+  <img 
+    src="./img/Logo_du_ministère_de_la_coordination.png" 
+    alt="Logo Ministère"
+    class="h-14 w-auto object-contain"
+  >
+  <span class="hidden md:block text-white font-[Playfair_Display] text-lg tracking-wide">
+    Ministère De La Coordination
+  </span>
+</a>
+
+    <nav class="hidden md:flex gap-10 text-sm text-taupe font-medium">
+      <a href="#" class="hover:text-accent transition">Accueil</a>
+      <a href="#about" class="hover:text-accent transition">À propos</a>
+      <a href="#binomage" class="hover:text-accent transition">Binomages</a>
+      <a href="#contact" class="bg-accent text-marine px-5 py-2 rounded-full hover:scale-105 transition shadow-md">
+        Contact
+      </a>
     </nav>
-
-    <div class="flex justify-center">
-      <img src="./img/Logo_du_ministère_de_la_coordination.png" class="h-21 w-[150px] hover:scale-105 transition duration-300">
-    </div>
-
-    <div></div>
 
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="h-screen flex items-center justify-center relative bg-cover bg-center"
-style="background-image: url('./img/Neos.png');">
+<section class="relative min-h-screen flex items-center bg-marine text-white overflow-hidden">
 
-  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent_40%)]"></div>
 
-  <div class="relative text-center text-white max-w-3xl px-6">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-      Bienvenue sur le site du ministère de la coordination de Bloom Vases d’Honneur Centre Kodesh
-    </h1>
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center px-8 pt-32">
 
-    <a href="#binomage"
-       class="bg-sorbet px-[50px] py-4 rounded-full text-lg font-semibold shadow-xl hover:scale-105 transition duration-300">
-       Trouver mon binôme
-    </a>
+    <div>
+      <p class="uppercase tracking-widest text-accent mb-4 text-sm">
+        Excellence • Organisation • Impact
+      </p>
+
+      <h2 class="text-4xl md:text-6xl font-[Playfair_Display] leading-tight mb-6">
+        Structurer avec vision.<br>
+        Servir avec excellence.
+      </h2>
+
+      <p class="text-taupe mb-10 text-lg max-w-lg">
+        Le Ministère de la Coordination veille à l’ordre, l’harmonie et la fluidité
+        des activités de Bloom Vases d’Honneur Centre Kodesh.
+      </p>
+
+      <a href="#about"
+         class="bg-accent text-marine px-8 py-4 rounded-full font-semibold shadow-xl hover:scale-105 transition duration-300">
+         Découvrir plus
+      </a>
+    </div>
+
+    <div class="hidden md:flex justify-center relative">
+      <div class="w-96 h-96 bg-taupe rounded-full opacity-20 absolute"></div>
+      <div class="w-80 h-80 bg-accent rounded-full opacity-10 absolute top-10 left-10"></div>
+    </div>
+
+  </div>
+
+  <!-- vague bas -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg viewBox="0 0 1440 320" class="w-full">
+      <path fill="#F3EFEA" fill-opacity="1"
+        d="M0,160L80,170.7C160,181,320,203,480,213.3C640,224,800,224,960,197.3C1120,171,1280,117,1360,90.7L1440,64L1440,320L0,320Z">
+      </path>
+    </svg>
   </div>
 
 </section>
 
 <!-- ================= ABOUT ================= -->
-<section id="about" class="py-24">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center px-10">
+<section id="about" class="py-28">
+  <div class="max-w-6xl mx-auto text-center px-8">
 
-    <div>
-      <h2 class="text-4xl font-bold mb-6">À propos</h2>
-      <p class="text-lg leading-relaxed text-gray-700">
-     Le Ministère de la Coordination est le pôle organisationnel stratégique de Bloom Vases d’Honneur Centre Kodesh.
-Il regroupe six départements clés qui travaillent ensemble pour assurer l’ordre, l’excellence et la fluidité de chaque programme et culte.
-Notre mission est simple : garantir une organisation structurée, harmonieuse et spirituellement impactante.
-      </p>
-    </div>
+    <h3 class="text-accent uppercase tracking-widest text-sm mb-3">
+      Notre Mission
+    </h3>
 
-    <div>
-      <img src="./img/Logo du ministère de la coordination.jpeg" class="rounded-3xl shadow-xl">
-    </div>
+    <h2 class="text-4xl font-[Playfair_Display] mb-8">
+      Une coordination stratégique et spirituelle
+    </h2>
 
-  </div>
-</section>
-
-<!-- ================= BINOMAGE ================= -->
-<section id="binomage" class="py-24 bg-white">
-  <div class="max-w-xl mx-auto text-center px-6">
-
-    <h2 class="text-4xl font-bold mb-10">Découvrez votre binôme</h2>
-     <p class="text-lg mb-12 text-gray-700">
-        Le binômage, c’est travailler en duo pour assurer efficacité, continuité et soutien mutuel.
-Chaque binôme partage responsabilités, compétences et veille l’un sur l’autre, même dans la prière, en appelant son frère pour le soutenir spirituellement.
-      Entrez votre nom pour découvrir votre binôme et renforcer les liens au sein de notre ministère.    </p>
-    <!-- Input + suggestions -->
-    <div class="relative mb-6">
-      <input 
-        type="text" 
-        id="searchInput"
-        placeholder="Commencez à taper votre nom..."
-        class="w-full border border-gray-300 rounded-full px-6 py-4 focus:outline-none focus:ring-2 focus:ring-sorbet"
-      />
-
-      <ul id="suggestions"
-          class="absolute w-full bg-white shadow-lg rounded-xl mt-2 hidden max-h-60 overflow-y-auto text-left">
-      </ul>
-    </div>
-
-    <!-- Bouton validation -->
-    <button id="validateBtn"
-      class="bg-sorbet text-white px-8 py-3 rounded-full font-semibold shadow-md hover:scale-105 transition duration-300">
-      Découvrir mon binôme
-    </button>
-
-    <!-- Résultat -->
-    <div id="result"
-         class="mt-12 hidden bg-cotton p-8 rounded-3xl shadow-xl transform scale-90 opacity-0 transition-all duration-500">
-
-      <h3 class="text-2xl font-bold mb-4">Trouvé!</h3>
-
-      <p id="binomeName" class="text-xl mb-2"></p>
-      <p id="binomeDept" class="text-sm text-gray-600 mb-6"></p>
-       <p id="binomePhone" class="text-sm text-gray-600 mb-6"></p>
-
-      <a id="whatsappBtn"
-         target="_blank"
-         class="bg-sorbet text-white px-6 py-3 rounded-full hover:scale-105 transition shadow-md">
-         Contacter sur WhatsApp
-      </a>
-    </div>
+    <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+      Nous assurons la planification, l'organisation et le suivi des activités
+      afin de garantir un environnement structuré, harmonieux et impactant.
+      Chaque département travaille en synergie pour maintenir l’excellence
+      et la continuité des services.
+    </p>
 
   </div>
 </section>
 
+<section id="binomage" class="py-32 bg-gradient-to-b from-white to-taupeSoft">
+  <div class="max-w-3xl mx-auto text-center px-8">
+
+    <!-- Titre -->
+    <h2 class="text-4xl md:text-5xl font-[Playfair_Display] mb-6">
+      Découvrez votre binôme
+    </h2>
+
+    <p class="text-gray-600 mb-14 text-lg max-w-2xl mx-auto">
+      Travaillez en duo pour renforcer l’unité, la continuité et l’excellence au sein du ministère.
+    </p>
+
+    <!-- Card principale -->
+    <div class="bg-white p-10 md:p-14 rounded-[40px] shadow-2xl border border-taupe/40">
+
+      <!-- Input -->
+      <div class="relative mb-8">
+        <input 
+          type="text" 
+          id="searchInput"
+          placeholder="Commencez à taper votre nom..."
+          class="w-full bg-taupeSoft border border-transparent rounded-full px-8 py-5 text-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-accent focus:bg-white transition duration-300"
+        />
+
+        <ul id="suggestions"
+            class="absolute w-full bg-white shadow-xl rounded-2xl mt-3 hidden max-h-60 overflow-y-auto text-left border border-gray-100 z-10">
+        </ul>
+      </div>
+
+      <!-- Bouton -->
+      <button id="validateBtn"
+        class="bg-marine text-white px-12 py-5 rounded-full text-lg font-semibold tracking-wide shadow-xl hover:scale-105 hover:bg-accent hover:text-marine transition duration-300">
+        Découvrir mon binôme
+      </button>
+
+      <!-- Résultat -->
+      <div id="result"
+           class="mt-14 hidden bg-taupeSoft p-10 rounded-3xl shadow-xl border border-taupe transform scale-95 opacity-0 transition-all duration-500">
+
+        <h3 class="text-2xl font-[Playfair_Display] mb-6 text-accent">
+          Votre binôme
+        </h3>
+
+        <div class="space-y-2">
+          <p id="binomeName" class="text-2xl font-semibold"></p>
+          <p id="binomeDept" class="text-gray-600"></p>
+          <p id="binomePhone" class="text-gray-600"></p>
+        </div>
+
+        <a id="whatsappBtn"
+           target="_blank"
+           class="inline-block mt-8 bg-green-500 text-white px-10 py-4 rounded-full text-lg hover:scale-105 transition shadow-lg">
+           Contacter sur WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer id="contact" class="bg-marine text-taupe py-16">
+  <div class="max-w-6xl mx-auto text-center px-8">
+
+    <h3 class="text-2xl font-[Playfair_Display] mb-4">
+      Ministère de la Coordination
+    </h3>
+
+    <p class="mb-6 text-sm">
+      Bloom Vases d’Honneur – Centre Kodesh
+    </p>
+
+    <p class="text-xs opacity-70">
+      © 2026 Tous droits réservés
+    </p>
+
+  </div>
+</footer>
 <script src="./js/script.js"></script>
 </body>
 </html>
