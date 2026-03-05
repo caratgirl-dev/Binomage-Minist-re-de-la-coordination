@@ -165,80 +165,79 @@ const members = [
   {"name":"Aboke Christ","phone":"0141496363","dept":"Usher Light","binome":{"name":"Ziki Jean Elisee","phone":"0105236163","dept":"Usher Light"}},
   {"name":"N'da Shaddai El","phone":"0565838662","dept":"Usher Light","binome":{"name":"Malle Sarah","phone":"0586472708","dept":"Usher Light"}},
   {"name":"Malle Sarah","phone":"0586472708","dept":"Usher Light","binome":{"name":"N'da Shaddai El","phone":"0565838662","dept":"Usher Light"}},
-  {"name":"Assamoi Anael","phone":"0702766940","dept":"Usher Light","binome":null},
-  {"name":"Marie Grâce Kouamé","phone":"+2250758099815","dept":"Dress Code Light","binome":{"name":"Coach Floria","phone":"+2250799131845","dept":"Dress Code Light"}},
-  {"name":"Coach Floria","phone":"+2250799131845","dept":"Ministre du Ministère de Coordination","binome":{"name":"Marie Grâce Kouamé","phone":"+2250758099815","dept":"Dress Code Light"}},
+  {"name":"Assamoi Anael","phone":"0702766940","dept":"Usher Light","binome":{"name":"Marie Grâce Kouamé","phone":"+2250758099815","dept":"Dress Code Light"}},
+  {"name":"Marie Grâce Kouamé","phone":"+2250758099815","dept":"Dress Code Light","binome":{"name":"Assamoi Anael","phone":"0702766940","dept":"Usher Light"}},
   {"name":"Koffi Tania","phone":"+2250799139830","dept":"Dress Code Light","binome":{"name":"Ohouo Norah","phone":"0788210458","dept":"Usher Light"}}
 ];
 
-
-const input = document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput");
 const suggestions = document.getElementById("suggestions");
-const validateBtn = document.getElementById("validateBtn");
-const result = document.getElementById("result");
+let validateBtn = document.getElementById("validateBtn");
 
 let selectedMember = null;
 
-/* AUTOCOMPLETE */
-input.addEventListener("input", () => {
-  const value = input.value.toLowerCase();
-  suggestions.innerHTML = "";
-  selectedMember = null;
 
-  if (!value) {
+// ===== AUTOCOMPLETE =====
+searchInput.addEventListener("input", function () {
+
+  const value = this.value.toLowerCase().trim();
+
+  suggestions.innerHTML = "";
+
+  if (value === "") {
     suggestions.classList.add("hidden");
     return;
   }
 
-  const filtered = members.filter(m =>
-    m.name.toLowerCase().includes(value)
+  const filtered = members.filter(member =>
+    member.name.toLowerCase().includes(value)
   );
 
-  filtered.forEach(member => {
+  filtered.slice(0, 8).forEach(member => {
+
     const li = document.createElement("li");
+
     li.textContent = member.name;
-    li.className = "px-6 py-3 hover:bg-cotton cursor-pointer";
+
+    li.className =
+      "px-6 py-3 cursor-pointer hover:bg-taupeSoft transition";
+
     li.onclick = () => {
-      input.value = member.name;
+      searchInput.value = member.name;
       selectedMember = member;
       suggestions.classList.add("hidden");
     };
+
     suggestions.appendChild(li);
+
   });
 
-  suggestions.classList.toggle("hidden", filtered.length === 0);
+  suggestions.classList.remove("hidden");
+
 });
 
-/* BOUTON VALIDATION */
-validateBtn.addEventListener("click", () => {
 
-  if (!selectedMember) {
+validateBtn.addEventListener("click", function () {
+
+  if (!selectedMember || !selectedMember.binome) {
     alert("Veuillez sélectionner votre nom dans la liste.");
     return;
   }
 
-  document.getElementById("binomeName").textContent =
-    selectedMember.binome.name;
+  const name = selectedMember.binome.name;
+  const dept = selectedMember.binome.dept;
+  const phone = selectedMember.binome.phone;
 
-  document.getElementById("binomeDept").textContent =
-    selectedMember.binome.dept;
+  document.getElementById("binomeName").textContent = name;
+  document.getElementById("binomeDept").textContent = dept;
+  document.getElementById("binomePhone").textContent = phone;
 
-  document.getElementById("binomePhone").textContent =
-    selectedMember.binome.phone;
-
-  const message =
-    `Bonjour ${selectedMember.binome.name}, je suis ton binôme du ministère de la coordination.`;
-
-  const whatsappURL =
-    `https://wa.me/${selectedMember.binome.phone}?text=${encodeURIComponent(message)}`;
-
-  document.getElementById("whatsappBtn").href = whatsappURL;
-
-  /* Animation révélation */
+  const result = document.getElementById("result");
   result.classList.remove("hidden");
 
   setTimeout(() => {
-    result.classList.remove("scale-90", "opacity-0");
+    result.classList.remove("scale-95", "opacity-0");
     result.classList.add("scale-100", "opacity-100");
   }, 50);
+
 });
